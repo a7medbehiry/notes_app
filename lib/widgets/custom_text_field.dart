@@ -22,6 +22,7 @@ class CustomTextField extends StatelessWidget {
       ),
       cursorColor: kPrimaryColor,
       maxLines: maxLines,
+      
     );
   }
 
