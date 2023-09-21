@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:notesapp/cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:notesapp/helper/show_snack_bar.dart';
 import 'package:notesapp/models/note_model.dart';
 import 'package:notesapp/widgets/custom_button.dart';
 import 'package:notesapp/widgets/custom_colors_list_view_builder.dart';
@@ -28,7 +29,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
       autovalidateMode: autovalidateMode,
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 32,
           ),
           CustomTextFormField(
@@ -37,7 +38,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
             },
             hintText: 'Title',
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           CustomTextFormField(
@@ -47,11 +48,11 @@ class _AddNoteFormState extends State<AddNoteForm> {
             hintText: 'Content',
             maxLines: 5,
           ),
-          SizedBox(
+          const SizedBox(
             height: 32,
           ),
-          CustomColorsListViewBuilder(),
-          SizedBox(
+          const CustomColorsListViewBuilder(),
+          const SizedBox(
             height: 32,
           ),
           BlocBuilder<AddNoteCubit, AddNoteState>(
@@ -70,6 +71,11 @@ class _AddNoteFormState extends State<AddNoteForm> {
                       date: formattedCurrentDate,
                       color: Colors.blue.value,
                     );
+                    showSnackBar(
+                            context,
+                            'Note Added Successfully',
+                            
+                          );
                     BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
                   } else {
                     autovalidateMode = AutovalidateMode.always;
@@ -81,7 +87,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
               );
             },
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
         ],

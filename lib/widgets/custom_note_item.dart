@@ -25,7 +25,7 @@ class CustomNoteItem extends StatelessWidget {
         );
       },
       child: Container(
-        padding: EdgeInsets.only(
+        padding: const EdgeInsets.only(
           left: 16,
           top: 24,
           bottom: 24,
@@ -42,7 +42,7 @@ class CustomNoteItem extends StatelessWidget {
             ListTile(
               title: Text(
                 note.title,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 26,
                 ),
@@ -65,7 +65,7 @@ class CustomNoteItem extends StatelessWidget {
                   note.delete();
                   BlocProvider.of<ReadNoteCubit>(context).fetchAllNotes();
                 },
-                icon: Icon(
+                icon: const Icon(
                   FontAwesomeIcons.trash,
                   color: Colors.black,
                   size: 24,

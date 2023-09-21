@@ -14,11 +14,11 @@ class CustomAppBar extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 28,
           ),
         ),
-        Spacer(
+        const Spacer(
           flex: 1,
         ),
         CustomIcon(

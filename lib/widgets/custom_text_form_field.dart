@@ -28,7 +28,7 @@ class CustomTextFormField extends StatelessWidget {
           kPrimaryColor,
         ),
         hintText: hintText,
-        hintStyle: TextStyle(
+        hintStyle: const TextStyle(
           color: kPrimaryColor,
         ),
       ),

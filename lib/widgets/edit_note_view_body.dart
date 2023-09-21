@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notesapp/cubits/read_note_cubit/read_note_cubit.dart';
+import 'package:notesapp/helper/show_snack_bar.dart';
 import 'package:notesapp/models/note_model.dart';
 import 'package:notesapp/widgets/custom_app_bar.dart';
 import 'package:notesapp/widgets/custom_text_form_field.dart';
+import 'package:notesapp/widgets/edit_note_colors_list_view_builder.dart';
 
 class EditNoteViewBody extends StatefulWidget {
   final NoteModel note;
@@ -23,7 +25,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
       ),
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 55,
           ),
           CustomAppBar(
@@ -31,13 +33,17 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
               widget.note.title = title ?? widget.note.title;
               widget.note.subTitle = subTitle ?? widget.note.subTitle;
               widget.note.save();
+              showSnackBar(
+                context,
+                'Note Updated Successfully',
+              );
               BlocProvider.of<ReadNoteCubit>(context).fetchAllNotes();
               Navigator.pop(context);
             },
             title: 'Edit Note',
             icon: Icons.check,
           ),
-          SizedBox(
+          const SizedBox(
             height: 50,
           ),
           CustomTextFormField(
@@ -46,7 +52,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
             },
             hintText: widget.note.title,
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           CustomTextFormField(
@@ -55,7 +61,13 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
             },
             hintText: widget.note.subTitle,
             maxLines: 5,
-          )
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          EditNoteColorsListViewBuilder(
+            note: widget.note,
+          ),
         ],
       ),
     );
